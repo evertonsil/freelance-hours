@@ -5,6 +5,7 @@ namespace App\Livewire\Projects;
 use Livewire\Component;
 use App\Models\Project;
 use Livewire\Attributes\Computed;
+use Livewire\Attributes\On;
 
 class Proposals extends Component
 {
@@ -30,6 +31,8 @@ class Proposals extends Component
         $this->qty += 10;
     }
 
+    //no envio de nova proposta, executa a função render
+    #[On('proposal::created')]
     public function render()
     {
         return view('livewire.projects.proposals');

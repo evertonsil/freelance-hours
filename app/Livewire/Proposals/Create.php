@@ -39,6 +39,9 @@ class Create extends Component
             ['hours' => $this->hours]
         );
 
+        //atualiza lista após o envio de nova proposta
+        $this->dispatch('proposal::created');
+        //fechando o modal ao enviar nova proposta
         $this->modal = false;
     }
 
