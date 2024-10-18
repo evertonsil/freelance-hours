@@ -5,6 +5,8 @@ namespace App\Livewire\Proposals;
 use App\Actions\ArrangePositions;
 use App\Models\Project;
 use App\Models\Proposal;
+use App\Notifications\LosePositionRank;
+use App\Notifications\NewProposal;
 use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
@@ -47,6 +49,8 @@ class Create extends Component
             $this->arrangePositions($proposal);
         });
 
+        //prepara envio da notificaçãop por e-mail
+        $this->project->author->notify(new NewProposal($this->project));
         //atualiza lista após o envio de nova proposta
         $this->dispatch('proposal::created');
         //fechando o modal ao enviar nova proposta
@@ -70,7 +74,10 @@ class Create extends Component
         if ($otherProposal) {
             $proposal->update(['position_status' => 'up']);
 
-            Proposal::query()->where('id', '=', $otherProposal->id)->update(['position_status' => 'down']);
+            $oProposal = Proposal::find($otherProposal->id);
+            $oProposal->update(['position_status' => 'down']);
+            //preparando uma notificação ao perder posição no Rank da listagem de propostas
+            $oProposal->notify(new LosePositionRank($this->project));
         }
 
         ArrangePositions::run($proposal->project_id);
