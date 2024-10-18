@@ -10,13 +10,6 @@
 FreelanceHours é uma aplicação desenvolvida em PHP, Laravel e Livewire, onde freelancers podem enviar propostas de horas que podem contribuir em determinado projeto.
 O projeto foi desenvolvido a partir do curso disponibilizado pela Rocketseat.
 
-Algumas tecnologias do Laravel /PHP utilizadas:
-<ul>
-    <li>Eloquent</li>
-    <li>FakerPHP</li>
-    <li>Envio de notificação via e-mail</li>
-</ul>
-
 <br>
 
 <p align="center">
@@ -29,6 +22,8 @@ Algumas tecnologias do Laravel /PHP utilizadas:
 - [**Laravel**](https://laravel.com/): Framework PHP utilizado para a estrutura e organização do projeto;
 - [**Livewire**](https://laravel-livewire.com/): Utilizado para criar interfaces dinâmicas e reativas sem sair do Laravel;
 - [**Tailwind**](https://tailwindcss.com/): Framework CSS que facilita o desenvolvimento de interfaces modernas e responsivas.
+- [**Eloquent**](https://laravel.com/docs/11.x/eloquent): ORM utilizado para tratar as models do projeto.
+- [**Mailpit**](https://mailpit.axllent.org/docs/install/docker/): Ferramenta utilizada para rodar um servidor de e-mail local.
 
 
 ## Licença
